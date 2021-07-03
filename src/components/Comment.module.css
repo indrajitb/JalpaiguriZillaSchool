@@ -1,0 +1,14 @@
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+.comment {
+  padding: 10px;
+  background-color: rgb(218, 240, 209);
+  width: auto;
+  border-radius: 8px;
+}

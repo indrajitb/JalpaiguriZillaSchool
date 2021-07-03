@@ -1,0 +1,7 @@
+{
+  "name": "jzs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

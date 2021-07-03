@@ -1,0 +1,41 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.content {
+  /* --background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), */
+  /* --background: url(../assets/school-pic.jpg) 50% / cover; */
+  background-size: cover;
+  height: 100vh;
+}
+
+.profile {
+  --background: 
+  /* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), */ url(../images/school-pic.jpg)
+    50% / cover;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: 50%;
+}
+
+.rowStyle {
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 50%;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+.xc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorColor {
+  color: crimson;
+}

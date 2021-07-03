@@ -1,0 +1,22 @@
+.alignment {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.background {
+  background-color: rgb(241, 237, 237);
+}
+
+.post {
+  padding: 10px;
+}
+
+.comment {
+  width: fit-content;
+}
+
+.fullwidth {
+  width: auto;
+}

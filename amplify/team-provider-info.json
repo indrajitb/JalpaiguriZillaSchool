@@ -1,0 +1,43 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-school-dev-212530-authRole",
+      "UnauthRoleArn": "arn:aws:iam::195155602062:role/amplify-school-dev-212530-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::195155602062:role/amplify-school-dev-212530-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-school-dev-212530-deployment",
+      "UnauthRoleName": "amplify-school-dev-212530-unauthRole",
+      "StackName": "amplify-school-dev-212530",
+      "StackId": "arn:aws:cloudformation:ap-south-1:195155602062:stack/amplify-school-dev-212530/f50e40b0-cd28-11eb-9da7-0a908ce2a9f2",
+      "AmplifyAppId": "d1vd2jf0x15nz9"
+    },
+    "categories": {
+      "auth": {
+        "schoolresources": {
+          "facebookAppId": "3508159432611242",
+          "googleClientId": "362571873678-seniol4vl0ciursnpo1dajmc6ahq78dm.apps.googleusercontent.com"
+        }
+      },
+      "function": {
+        "AdminQueriesb5df179f": {
+          "deploymentBucketName": "amplify-school-dev-212530-deployment",
+          "s3Key": "amplify-builds/AdminQueriesb5df179f-4572427375633668594f-build.zip"
+        },
+        "S3Trigger387a2cd8": {
+          "deploymentBucketName": "amplify-school-dev-212530-deployment",
+          "s3Key": "amplify-builds/S3Trigger387a2cd8-4a46436a656d464a5534-build.zip"
+        },
+        "jzshandleposts": {
+          "deploymentBucketName": "amplify-school-dev-212530-deployment",
+          "s3Key": "amplify-builds/jzshandleposts-4f72795a4d37617a4b52-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1vd2jf0x15nz9",
+          "type": "cicd"
+        }
+      }
+    }
+  }
+}

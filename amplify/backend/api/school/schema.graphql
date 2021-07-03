@@ -1,0 +1,226 @@
+type User
+  @aws_cognito_user_pools
+  @aws_iam
+  @model
+  @key(fields: ["email"])
+  @key(name: "byId", fields: ["id"], queryField: "getUserById")
+  @auth(
+    rules: [
+      { allow: private, identityField: "sub" }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  ) {
+  id: ID!
+  type: TableName!
+  name: String!
+  email: ID!
+  userOwnerId: String
+  userOwnerName: String
+  accountConfirmed: Boolean
+  createdAt: String
+  profile: Profile @connection
+  profileCreated: Boolean
+  mediaFiles: [MediaFile] @connection
+  posts: [Post] @connection
+  comments: [Comment] @connection
+  owner: String
+}
+
+type Profile
+  @aws_cognito_user_pools
+  @aws_iam
+  @model
+  @key(name: "byUserId", fields: ["userId"], queryField: "getProfileByUserId")
+  @key(fields: ["userEmail"])
+  @key(name: "byRole", fields: ["roleInteger"], queryField: "getProfileByRole")
+  @key(
+    name: "bySchoolLeavingYear"
+    fields: ["schoolLeavingYear"]
+    queryField: "getProfileBySchoolLeavingYear"
+  )
+  @key(
+    name: "byClassRoomAndYear"
+    fields: ["classRoomYear", "classRoom"]
+    queryField: "getProfileByClassRoomYear"
+  )
+  @key(
+    name: "byClassRoom"
+    fields: ["classRoom"]
+    queryField: "getProfileByClassRoom"
+  )
+  @auth(
+    rules: [
+      { allow: private, identityField: "sub" }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  ) {
+  id: ID!
+  type: TableName!
+  userId: ID!
+  classRoom: String
+  userEmail: ID!
+  classRoomYear: String
+  schoolLeavingYear: String
+  year: String
+  role: Role!
+  roleInteger: Int!
+  profileOwnerId: String
+  profileOwnerName: String
+  user: User @connection(fields: ["userEmail"])
+  owner: String
+}
+
+enum Role {
+  TeachingStaff
+  Student
+  NonTeachingStaff
+  Alumni
+  ExTeachingStaff
+  ExNonTeachingStaff
+  Headmaster
+  AsstHeadMaster
+  AlumniAndTeachingStaff
+  AlumniAndNonTeachingStaff
+  AlumniAndExTeachingStaff
+  AlumniAndExNonTeachingStaff
+  Admin
+}
+
+enum TableName {
+  User
+  Profile
+  MediaFile
+  Post
+  Comment
+}
+
+type S3Object {
+  bucket: String! #bucket name
+  region: String! #bucket region
+  key: String! #key or name of the object
+}
+
+type MediaFile
+  @aws_cognito_user_pools
+  @aws_iam
+  @model
+  @key(
+    name: "byTimeCreated"
+    fields: ["type", "createdAt"]
+    queryField: "getMediaByTime"
+  )
+  @auth(
+    rules: [
+      { allow: private, identityField: "sub" }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  ) {
+  id: ID!
+  type: TableName!
+  userId: ID
+  userEmail: ID!
+  user: User @connection(fields: ["userEmail"])
+  file: [S3Object]!
+  createdAt: AWSDateTime!
+  owner: String
+}
+
+type CarouselData
+  @aws_cognito_user_pools
+  @aws_iam
+  @model
+  @auth(
+    rules: [
+      { allow: private, identityField: "sub" }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  ) {
+  id: ID!
+  file: [S3Object]!
+  createdAt: AWSDateTime!
+  owner: String
+}
+
+type Post
+  @aws_cognito_user_pools
+  @aws_iam
+  @model
+  @auth(
+    rules: [
+      { allow: private, identityField: "sub" }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  )
+  @key(fields: ["id"])
+  @key(name: "byUserEmail", fields: ["userEmail"])
+  @key(
+    name: "sortedByTime"
+    fields: ["type", "updatedAt", "createdAt"]
+    queryField: "getAllPosts"
+  ) {
+  type: TableName!
+  id: ID!
+  userId: String
+  userEmail: ID!
+  user: User @connection(fields: ["userEmail"])
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  title: String
+  content: String
+  files: [S3Object]
+  comments: [Comment] @connection(keyName: "byPostId", fields: ["id"])
+  likes: [String]
+  unlikes: [String]
+  likeCount: String
+  unlikeCount: String
+  owner: String
+}
+
+type Comment
+  @aws_cognito_user_pools
+  @aws_iam
+  @model
+  @auth(
+    rules: [
+      { allow: private, identityField: "sub" }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  )
+  @key(fields: ["id"])
+  @key(name: "byUserEmail", fields: ["userEmail"])
+  @key(
+    name: "byTime"
+    fields: ["type", "updatedAt", "createdAt"]
+    queryField: "getAllComments"
+  )
+  @key(
+    name: "byPostId"
+    fields: ["postId", "updatedAt"]
+    queryField: "getCommentsByPostId"
+  ) {
+  type: TableName!
+  id: ID!
+  postId: ID!
+  userId: String
+  userEmail: ID!
+  content: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  likes: [String]
+  unlikes: [String]
+  likeCount: String
+  unlikeCount: String
+  user: User @connection(fields: ["userEmail"])
+  post: Post @connection
+  owner: String
+}
+
+# type Subscription @aws_cognito_user_pools @aws_iam {
+#   createdPost: Post @aws_subscribe(mutations: ["createPost"])
+#   updatedPost: Post @aws_subscribe(mutations: ["updatePost"])
+#   deletedPost: Post @aws_subscribe(mutations: ["deletePost"])
+
+#   createdComment: Comment @aws_subscribe(mutations: ["createComment"])
+#   updatedComment: Comment @aws_subscribe(mutations: ["updateComment"])
+#   deletedComment: Comment @aws_subscribe(mutations: ["deleteComment"])
+# }

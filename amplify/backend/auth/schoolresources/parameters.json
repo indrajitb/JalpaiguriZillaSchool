@@ -1,0 +1,90 @@
+{
+    "identityPoolName": "school_identity_pool",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "schooldec1ea96",
+    "userPoolName": "school_user_pool",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "email",
+        "family_name",
+        "name"
+    ],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email",
+        "family_name",
+        "name"
+    ],
+    "userpoolClientReadAttributes": [
+        "email",
+        "family_name",
+        "middle_name",
+        "given_name",
+        "name",
+        "profile",
+        "email_verified"
+    ],
+    "userpoolClientLambdaRole": "schooldec1ea96_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": true,
+    "sharedId": "dec1ea96",
+    "resourceName": "schoolresources",
+    "authSelections": "identityPoolAndUserPool",
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "useDefault": "manual",
+    "thirdPartyAuth": true,
+    "authProviders": [
+        "graph.facebook.com",
+        "accounts.google.com"
+    ],
+    "usernameAttributes": [
+        "email"
+    ],
+    "userPoolGroups": true,
+    "adminQueries": true,
+    "triggers": "{}",
+    "hostedUI": true,
+    "hostedUIDomainName": "school",
+    "authProvidersUserPool": [
+        "Facebook",
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"family_name\":\"last_name\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"family_name\":\"family_name\",\"name\":\"name\",\"username\":\"sub\"}}]",
+    "userPoolGroupList": [
+        "schooladmins"
+    ],
+    "adminQueryGroup": "schooladmins",
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "breakCircularDependency": true,
+    "permissions": [],
+    "dependsOn": [],
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://jalpaigurizillaschool.in/\",\"http://localhost:3000/\",\"https://development.d1vd2jf0x15nz9.amplifyapp.com/\",\"https://master.d1vd2jf0x15nz9.amplifyapp.com/\",\"https://www.jalpaigurizillaschool.in/\",\"https://www.jalpaigurizillaschool.in/\"],\"LogoutURLs\":[\"https://jalpaigurizillaschool.in/\",\"http://localhost:3000/\",\"https://development.d1vd2jf0x15nz9.amplifyapp.com/\",\"https://master.d1vd2jf0x15nz9.amplifyapp.com/\",\"https://www.jalpaigurizillaschool.in/\"]}"
+}

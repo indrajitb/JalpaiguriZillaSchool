@@ -1,0 +1,68 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.content {
+  display: inline-block;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+
+.alignment {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.container {
+  height: 70vh;
+  width: auto;
+  margin: auto;
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+/* .container {
+  height: 100vh;
+  width: auto;
+  margin: 10px;
+  display: block;
+} */
+
+.alignphoto {
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,40 @@
+{
+  "lambdaLayers": [],
+  "permissions": {
+    "function": {
+      "S3Trigger387a2cd8": [
+        "read"
+      ]
+    },
+    "api": {
+      "school": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "storage": {
+      "schools3": [
+        "read"
+      ],
+      "User:@model(appsync)": [
+        "read"
+      ],
+      "Profile:@model(appsync)": [
+        "read"
+      ],
+      "MediaFile:@model(appsync)": [
+        "read"
+      ],
+      "CarouselData:@model(appsync)": [
+        "read"
+      ],
+      "Post:@model(appsync)": [
+        "read"
+      ],
+      "Comment:@model(appsync)": [
+        "read"
+      ]
+    }
+  }
+}
