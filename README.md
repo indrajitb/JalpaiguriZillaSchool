@@ -8,8 +8,8 @@
 
 ## How to Run
 
-1. Clone this repository.
-2. In a terminal, change directory into the repo: `cd JalpaiguriZillaSchool`.
-3. Install all packages: `npm install`.
+1. Clone this repository
+2. In a terminal, change directory into the repo: `cd JalpaiguriZillaSchool`
+3. Install all packages: `npm install`
 4. Have your credentials and settings for AWS Amplify/AppSync, Firebase, VAPID keys
 5. Run on the web: `npm start` or `ionic serve`
